@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishita Biswas — Product Builder &amp; Content Strategist</title>
+<meta name="description" content="Ishita Biswas builds full SaaS products from her phone and writes content strategy that ships. FormCraft Pro, Sahayata Portal — plus freelance copywriting and content strategy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171F;
+    --paper:#F2EFE6;
+    --paper-dim:#E9E4D6;
+    --gold:#A8792B;
+    --gold-soft:#C79A4B;
+    --teal:#2F6F6E;
+    --teal-soft:#3F8988;
+    --grey:#5A5D6B;
+    --line:#D9D3C1;
+    --line-dark:#31353F;
+    --white:#FBFAF6;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important; transition:none !important;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fraunces',serif; font-weight:600; margin:0; }
+  .mono{ font-family:'IBM Plex Mono',monospace; }
+  a{ color:inherit; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+  img{max-width:100%;display:block;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,239,230,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:920px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{ font-family:'Fraunces',serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em; text-decoration:none; }
+  .brand span{ color:var(--gold); }
+  nav.links{ display:flex; gap:22px; align-items:center; }
+  nav.links a{
+    text-decoration:none; font-size:0.86rem; color:var(--ink);
+    font-family:'IBM Plex Mono',monospace; letter-spacing:0.01em;
+    padding-bottom:2px; border-bottom:1px solid transparent;
+  }
+  nav.links a:hover{ border-bottom-color:var(--gold); }
+  .nav-cta{
+    background:var(--ink); color:var(--paper) !important; padding:8px 14px;
+    border-radius:var(--radius); border-bottom:none !important;
+  }
+  .nav-cta:hover{ background:var(--teal); }
+  .nav-toggle{ display:none; background:none; border:none; font-size:1.4rem; cursor:pointer; color:var(--ink); }
+
+  @media (max-width:720px){
+    nav.links{
+      position:fixed; top:56px; left:0; right:0; bottom:0;
+      background:var(--paper); flex-direction:column; align-items:flex-start;
+      padding:28px 24px; gap:20px; transform:translateX(100%);
+      transition:transform 0.25s ease; overflow-y:auto;
+    }
+    nav.links.open{ transform:translateX(0); }
+    nav.links a{ font-size:1.1rem; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:74px 0 56px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--grey); margin-bottom:18px; display:flex; gap:10px; align-items:center;
+  }
+  .eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--teal); display:inline-block; }
+  .hero h1{
+    font-size:clamp(2.4rem, 7vw, 4.1rem); line-height:1.04; letter-spacing:-0.01em;
+  }
+  .hero h1 .write{ font-style:italic; font-weight:500; color:var(--ink); }
+  .hero h1 .build{
+    font-family:'IBM Plex Mono',monospace; font-style:normal; font-weight:600;
+    color:var(--teal); font-size:0.72em; display:block; letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    max-width:560px; margin-top:22px; font-size:1.08rem; color:var(--grey);
+  }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .btn{
+    font-family:'IBM Plex Mono',monospace; font-size:0.85rem; text-decoration:none;
+    padding:12px 20px; border-radius:var(--radius); border:1px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px; transition:all .15s ease;
+  }
+  .btn-solid{ background:var(--ink); color:var(--paper); }
+  .btn-solid:hover{ background:var(--teal); border-color:var(--teal); }
+  .btn-line:hover{ background:var(--ink); color:var(--paper); }
+  .btn-gold{ border-color:var(--gold); color:var(--gold); }
+  .btn-gold:hover{ background:var(--gold); color:var(--paper); }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:60px 0; border-top:1px solid var(--line); }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin-bottom:36px; flex-wrap:wrap; }
+  .sec-num{ font-family:'IBM Plex Mono',monospace; color:var(--gold); font-size:0.85rem; }
+  .sec-head h2{ font-size:clamp(1.7rem,4vw,2.3rem); }
+  .sec-sub{ color:var(--grey); max-width:600px; margin-top:10px; font-size:0.98rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:start; }
+  @media (max-width:720px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ margin:0 0 16px; color:var(--ink); }
+  .about-grid p:last-child{ margin-bottom:0; }
+  .stat-card{
+    background:var(--white); border:1px solid var(--line); padding:20px;
+    border-radius:var(--radius);
+  }
+  .stat-card + .stat-card{ margin-top:14px; }
+  .stat-card .num{ font-family:'IBM Plex Mono',monospace; font-size:1.7rem; color:var(--teal); font-weight:600; }
+  .stat-card .label{ font-size:0.85rem; color:var(--grey); margin-top:4px; }
+
+  /* ---------- BUILD LOG (changelog) ---------- */
+  .log{ position:relative; padding-left:28px; border-left:2px solid var(--line); }
+  .log-entry{ position:relative; padding-bottom:44px; }
+  .log-entry:last-child{ padding-bottom:0; }
+  .log-entry::before{
+    content:""; position:absolute; left:-33px; top:4px; width:10px; height:10px;
+    border-radius:50%; background:var(--paper); border:2px solid var(--teal);
+  }
+  .log-entry.donated::before{ border-color:var(--gold); }
+  .log-tag-row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px; }
+  .log-ver{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--grey); }
+  .status{
+    font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase;
+    letter-spacing:0.06em; padding:3px 9px; border-radius:20px; border:1px solid currentColor;
+  }
+  .status.live{ color:var(--teal); }
+  .status.ngo{ color:var(--gold); }
+  .log-entry h3{ font-size:1.4rem; margin-bottom:4px; }
+  .log-entry .stack{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--grey); margin-bottom:12px; }
+  .log-entry p.desc{ color:var(--ink); margin-bottom:12px; max-width:620px; }
+  .log-entry ul{ margin:0 0 12px; padding-left:18px; color:var(--ink); }
+  .log-entry ul li{ margin-bottom:5px; }
+  .log-link{
+    font-family:'IBM Plex Mono',monospace; font-size:0.82rem; text-decoration:none;
+    color:var(--teal); border-bottom:1px solid var(--teal-soft);
+  }
+  .log-link:hover{ color:var(--gold); border-color:var(--gold); }
+
+  .also-shipped{
+    margin-top:12px; padding:20px; background:var(--white); border:1px solid var(--line);
+    border-radius:var(--radius);
+  }
+  .also-shipped .h{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--grey); margin-bottom:12px; }
+  .also-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:720px){ .also-grid{ grid-template-columns:1fr; } }
+  .also-item b{ display:block; margin-bottom:3px; }
+  .also-item{ font-size:0.9rem; color:var(--grey); }
+
+  /* ---------- WRITING ---------- */
+  .write-grid{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  @media (max-width:720px){ .write-grid{ grid-template-columns:1fr; } }
+  .write-card{
+    background:var(--white); border:1px solid var(--line); padding:22px; border-radius:var(--radius);
+    display:flex; flex-direction:column;
+  }
+  .write-card .kicker{ font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--teal); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+  .write-card h3{ font-size:1.2rem; font-style:italic; font-weight:500; margin-bottom:8px; }
+  .write-card .meta{ font-size:0.82rem; color:var(--grey); margin-bottom:12px; }
+  .write-card p.excerpt{ font-size:0.93rem; color:var(--ink); margin:0 0 14px; flex-grow:1; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; }
+  .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:var(--grey);
+    border:1px solid var(--line); padding:3px 8px; border-radius:20px;
+  }
+
+  /* ---------- VENTURES ---------- */
+  .venture-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media (max-width:720px){ .venture-list{ grid-template-columns:1fr; } }
+  .venture{
+    border:1px solid var(--line); background:var(--white); padding:18px; border-radius:var(--radius);
+  }
+  .venture h4{ font-family:'Fraunces',serif; font-size:1.05rem; margin-bottom:6px; }
+  .venture p{ font-size:0.88rem; color:var(--grey); margin:0 0 10px; }
+  .venture a{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--teal); text-decoration:none; border-bottom:1px solid var(--teal-soft); }
+
+  /* ---------- RESUME BAND ---------- */
+  .resume-band{
+    background:var(--ink); color:var(--paper); border-top:none; padding:64px 0;
+  }
+  .resume-band .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .resume-band h2{ color:var(--paper); font-size:clamp(1.6rem,4vw,2.1rem); }
+  .resume-band p{ color:#B9BAC4; max-width:440px; margin-top:10px; font-size:0.95rem; }
+  .resume-band .btn-solid{ background:var(--paper); color:var(--ink); border-color:var(--paper); }
+  .resume-band .btn-solid:hover{ background:var(--gold-soft); border-color:var(--gold-soft); color:var(--ink); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:40px 0 60px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  footer .f-left{ font-family:'Fraunces',serif; font-size:1rem; }
+  footer .f-links{ display:flex; gap:18px; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; }
+  footer .f-links a{ text-decoration:none; border-bottom:1px solid transparent; }
+  footer .f-links a:hover{ border-color:var(--gold); }
+  footer .copyright{ font-size:0.78rem; color:var(--grey); margin-top:18px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">Ishita<span>.</span>Biswas</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.links').classList.toggle('open')">&#9776;</button>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#build-log">Build Log</a>
+      <a href="#writing">Writing</a>
+      <a href="#ventures">Ventures</a>
+      <a href="./resume.pdf" class="nav-cta">Résumé (PDF)</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap" style="border-top:none;">
+    <div class="eyebrow"><span class="dot"></span>Kolkata, India — building &amp; writing since 2024</div>
+    <h1><span class="write">I write things</span><span class="build">// and I ship things.</span></h1>
+    <p class="lede">
+      Content strategist and independent product builder. I write copy that
+      moves people, and I design, build, and deploy full SaaS applications
+      end-to-end — entirely from a phone, no computer involved.
+    </p>
+    <div class="hero-ctas">
+      <a href="#build-log" class="btn btn-solid">See what I've built →</a>
+      <a href="#writing" class="btn btn-line">Read my writing</a>
+      <a href="./resume.pdf" class="btn btn-gold">Download résumé</a>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">01 — About</div>
+        <h2>Two disciplines, one person.</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm an English Literature student at Kalyani University who somehow
+          ended up shipping production SaaS applications from a phone. I
+          taught myself to design and build full products — auth, databases,
+          payments, and all — using Supabase and Netlify, because I wanted to
+          build things, not just describe them.
+        </p>
+        <p>
+          The same instinct shows up in my writing: I care about structure,
+          audience, and whether the thing actually works for the person on
+          the other end. That's true whether I'm writing a beginner's guide
+          to sports betting or building a crisis-response dashboard for
+          counselors reviewing high-priority cases.
+        </p>
+        <p>
+          Alongside both, I run <a href="https://sites.google.com/view/zero-coin-vda/home" class="log-link">Zero Coin India</a>,
+          a forensic audit consultancy helping Indian crypto investors with
+          VDA tax compliance.
+        </p>
+      </div>
+      <div>
+        <div class="stat-card">
+          <div class="num">2</div>
+          <div class="label">full SaaS products designed, built &amp; deployed</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">1</div>
+          <div class="label">civic platform donated to an NGO for real-world use</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">0</div>
+          <div class="label">computers used — every product shipped from mobile</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="build-log" class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">02 — Build Log</div>
+        <h2>Products I've designed and shipped.</h2>
+        <p class="sec-sub">
+          Each one built end-to-end — architecture, backend, billing, and UI — as a
+          solo, mobile-only builder using Supabase and Netlify.
+        </p>
+      </div>
+    </div>
+
+    <div class="log">
+
+      <div class="log-entry">
+        <div class="log-tag-row">
+          <span class="log-ver mono">v1</span>
+          <span class="status live">Live · Paid product</span>
+        </div>
+        <h3>FormCraft Pro</h3>
+        <div class="stack mono">Supabase · Netlify · PayPal subscriptions · Progressive Web App (PWA)</div>
+        <p class="desc">
+          A Progressive Web App (PWA) SaaS form builder — drag-and-drop form creation, response
+          collection with CSV export, an analytics dashboard, and a Free/Pro
+          billing tier on live PayPal subscriptions.
+        </p>
+        <ul>
+          <li>White-label branding for Pro accounts, including automatic accent-color extraction from an uploaded logo</li>
+          <li>Full account system: auth, password recovery, subscription management</li>
+          <li>Fixed cross-device issues including mobile PayPal redirect flows</li>
+        </ul>
+        <a href="https://formcraft.netlify.app" class="log-link" target="_blank" rel="noopener">formcraft.netlify.app →</a>
+      </div>
+
+      <div class="log-entry donated">
+        <div class="log-tag-row">
+          <span class="log-ver mono">v2</span>
+          <span class="status ngo">Donated to an NGO</span>
+        </div>
+        <h3>Sahayata Portal</h3>
+        <div class="stack mono">Supabase · Netlify · bilingual (Hindi/English)</div>
+        <p class="desc">
+          A national distress-response portal for citizens to confidentially
+          report harassment, workplace abuse, or family distress — with
+          severity triage, a trackable Case ID, and a dedicated crisis-response
+          path for emergencies.
+        </p>
+        <ul>
+          <li>Emergency Help flow that routes high-risk cases into a live crisis queue for counselor review</li>
+          <li>Authority dashboard with case analytics for NGO staff</li>
+          <li>Built-in "Calm Space" — guided breathing, grounding exercises, private journal — plus full Hindi/English support</li>
+        </ul>
+        <a href="https://sahayata-portal.netlify.app" class="log-link" target="_blank" rel="noopener">sahayata-portal.netlify.app →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="writing" class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">03 — Writing</div>
+        <h2>Writing samples &amp; strategy.</h2>
+        <p class="sec-sub">Blog writing, copywriting, and content strategy across audiences — from Gen Z fashion to first-time sports bettors.</p>
+      </div>
+    </div>
+    <div class="write-grid">
+
+      <div class="write-card">
+        <div class="kicker">Blog · Student audience</div>
+        <h3>Why Students Struggle with Focus</h3>
+        <div class="meta">Mental health &amp; student productivity · ages 15–22</div>
+        <p class="excerpt">
+          A long-form piece on how short-form content, ADHD, and always-online
+          study habits combine to erode attention span — written in a
+          relatable, peer-to-peer tone rather than an academic one.
+        </p>
+        <div class="tag-row">
+          <span class="tag">Long-form</span><span class="tag">Mental health framing</span><span class="tag">SEO structure</span>
+        </div>
+      </div>
+
+      <div class="write-card">
+        <div class="kicker">Spec campaign · Social copy</div>
+        <h3>Slayy Sunglasses — Instagram Campaign</h3>
+        <div class="meta">Gen Z fashion audience · Instagram</div>
+        <p class="excerpt">
+          A spec ad campaign in bold, internet-native Gen Z tone — captions,
+          product copy, and taglines built for shareability and profile
+          follows, not just impressions.
+        </p>
+        <div class="tag-row">
+          <span class="tag">Brand tone</span><span class="tag">Gen Z targeting</span><span class="tag">CTA writing</span>
+        </div>
+      </div>
+
+      <div class="write-card">
+        <div class="kicker">Technical / niche writing</div>
+        <h3>Sports Betting Guide &amp; Dream11 Review</h3>
+        <div class="meta">New bettors &amp; fantasy sports players in India</div>
+        <p class="excerpt">
+          A jargon-free explainer on how odds and stakes work, paired with a
+          platform review covering welcome bonuses, contest types, and
+          beginner strategy for Dream11.
+        </p>
+        <div class="tag-row">
+          <span class="tag">Beginner explainers</span><span class="tag">Platform review</span><span class="tag">Indian market</span>
+        </div>
+      </div>
+
+      <div class="write-card">
+        <div class="kicker">Content strategy plan</div>
+        <h3>Student Focus Content Strategy</h3>
+        <div class="meta">Audience segmentation · calendar · platform strategy</div>
+        <p class="excerpt">
+          A full content plan for a student wellbeing brand — audience
+          segmentation, a blog + Instagram publishing calendar, and
+          engagement goals designed to build trust, not just reach.
+        </p>
+        <div class="tag-row">
+          <span class="tag">Content planning</span><span class="tag">Repurposing</span><span class="tag">Engagement</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="ventures" class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-num">04 — Ventures</div>
+        <h2>Independent ventures &amp; products.</h2>
+      </div>
+    </div>
+    <div class="venture-list">
+      <div class="venture">
+        <h4>Zero Coin India</h4>
+        <p>Forensic audit consultancy for Indian crypto investors — Signed Technical Audit Certificates and VDA gain/loss calculations for Section 115BBH compliance. Founded and run independently, with auditing workflows automated in Google Apps Script.</p>
+        <a href="https://sites.google.com/view/zero-coin-vda/home" target="_blank" rel="noopener">Visit site →</a>
+      </div>
+      <div class="venture">
+        <h4>Published Book</h4>
+        <p>Independently researched, written, and marketed — available on Amazon India.</p>
+        <a href="https://amzn.in/d/05sIydqR" target="_blank" rel="noopener">View on Amazon →</a>
+      </div>
+      <div class="venture">
+        <h4>Proflow — Automation Guide</h4>
+        <p>A productivity and workflow-automation guide for independent learners, sold on Payhip.</p>
+        <a href="https://payhip.com/b/5Vty4" target="_blank" rel="noopener">View on Payhip →</a>
+      </div>
+      <div class="venture">
+        <h4>Readme Doc AI</h4>
+        <p>A documentation tool to help people work with and structure AI-generated content.</p>
+        <a href="https://payhip.com/b/ird9s" target="_blank" rel="noopener">View on Payhip →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="resume-band" style="border-top:none;">
+    <div class="wrap">
+      <div>
+        <h2>Prefer a document?</h2>
+        <p>Everything above, formatted as a one-stop résumé — writing experience, every product I've shipped, and the stack behind each one.</p>
+      </div>
+      <a href="./resume.pdf" class="btn btn-solid" download>Download résumé (PDF) ↓</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="wrap" style="padding:0;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div class="f-left">Ishita Biswas</div>
+      <div class="f-links">
+        <a href="mailto:ishitabiswas0201@gmail.com">Email</a>
+        <a href="tel:+918927447022">Call</a>
+        <a href="./resume.pdf">Résumé</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Ishita Biswas · Kolkata, India · Content Strategist &amp; Independent Product Builder</div>
+  </div>
+</footer>
+
+</body>
+</html>
